@@ -17,6 +17,18 @@ function preCarregarImagensPascoa() {
     }
 }
 
+
+function capitalizarNomeCompleto(frase) {
+    return frase
+        .toLowerCase() // primeiro converte tudo para minúsculo
+        .split(' ') // divide a string em palavras
+        .map(palavra => 
+            palavra.charAt(0).toUpperCase() + palavra.slice(1)
+        ) // capitaliza cada palavra
+        .join(' '); // junta as palavras novamente
+}
+
+
 // Função para criar efeito de flocos de Páscoa
 function criarFlocosPascoa() {
     // Remove flocos anteriores se existirem
