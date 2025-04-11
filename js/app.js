@@ -217,19 +217,34 @@ async function realizarSorteio() {
     btnSortear.disabled = true;
     resultado.style.display = 'none';
     
+    // Mostra o overlay de carregamento
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const loadingBar = document.getElementById('loadingBar');
+    loadingOverlay.style.transform = 'translateY(0)';
+    
+    loadingBar.style.width = '0%';
+
+    // Inicia a animação da barra de carregamento
+    setTimeout(() => {
+        loadingBar.style.width = '100%';
+    }, 50); // Pequeno delay para garantir que a transição seja aplicada
+       // Prepara o áudio
+       const aplausosAudio = document.getElementById('aplausosAudio');
     try {
-      
-        
-        // Efeito de suspense
+             // Configura o timer para tocar o áudio após 2 segundos
+             const audioTimer = setTimeout(() => {
+                aplausosAudio.play().catch(e => console.error("Erro ao reproduzir áudio:", e));
+            }, 2000);
+            
+        // Efeito de suspense (2 segundos para coincidir com a barra)
         await new Promise(resolve => setTimeout(resolve, 2000));
         
         // Sorteia um participante
         const indiceSorteado = Math.floor(Math.random() * participantes.length);
         const amigoSorteado = participantes[indiceSorteado];
         
-     
         criarFlocosPascoa();
-        // Restante do seu código original...
+        
         await fetch(`${FIREBASE_URL}/usuarios/${usuarioAtual.key}.json`, {
             method: 'PATCH',
             body: JSON.stringify({
@@ -245,18 +260,29 @@ async function realizarSorteio() {
         carregarFotoLocal(amigoSorteado.cpf, fotoSorteado, fotoSorteadoPlaceholder);
         mostrarResultadoFinal(amigoSorteado.nome);
         
-        
     } catch (error) {
         console.error('Erro ao realizar sorteio:', error);
         resultado.style.display = 'block';
         resultado.innerHTML = 'Ocorreu um erro ao realizar o sorteio. Por favor, tente novamente.';
         pararFlocosPascoa();
     } finally {
+
+        // No try/catch, antes de esconder o overlay:
+        loadingBar.classList.add('complete');
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Espera a animação terminar
+        loadingOverlay.style.transform = 'translateY(-100%)';
+        loadingBar.classList.remove('complete');
+    
+        // Reseta a barra para próxima vez
+        loadingBar.style.transition = 'none';
+        // Força o reflow antes de reaplicar a transição
+        void loadingBar.offsetWidth;
+        loadingBar.style.transition = 'width 2s linear';
+        
         btnSortear.innerHTML = '<i class="fas fa-random me-2"></i>Sortear';
         btnSortear.disabled = false;
     }
 }
-
 function mostrarResultadoFinal(nomeAmigo) {
     identificacao.style.display = 'none';
     sorteio.style.display = 'none';
