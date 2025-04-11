@@ -1,0 +1,136 @@
+/* Importa a fonte Georama do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Define a paleta de cores como variáveis CSS globais */
+:root {
+    /* Paleta Principal */
+    --roxo-uniodonto: #b9c9ff;
+    --pessego-uniodonto: #ff9fad;
+    --ciano-uniodonto: #60ebff;
+    --lima-uniodonto: #e1ff7b;
+    --goiaba-uniodonto: #ff637e;
+
+    /* Paleta de Apoio */
+    --vinho-medio-uniodonto: #a60069;
+    --vinho-ultra-uniodonto: #550039;
+    --vinho-claro-uniodonto: #bc5688;
+
+    /* Cores Neutras (adicionadas para flexibilidade) */
+    --branco: #ffffff;
+    --cinza-claro: #f8f9fa;
+    --preto-transparente: rgba(0, 0, 0, 0.1);
+    --branco-transparente: rgba(255, 255, 255, 0.3);
+}
+
+body {
+    /* Usa uma cor da paleta como fundo (pode ser ajustada) */
+    background-color: var(--lima-uniodonto); /* Mantém um fundo claro similar ao original */
+    background-size: 300px; /* Tamanho da imagem de fundo */
+    /* Aplica a fonte Georama a todo o corpo, com fallback para sans-serif */
+    font-family: 'Georama', sans-serif;
+    height: 100vh !important;
+}
+
+.card-body {
+    border: #a60069 solid 2px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.btn {
+    background-color: #a60069;
+    font-weight: bold;
+    border: solid transparent 2px;
+}
+
+.btn:hover {
+    background-color: white;
+    border: #a60069 solid 2px;
+    color: #a60069;
+}
+
+.card {
+    border-radius: 15px;
+    /* Usa uma variável para a sombra */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.311);
+    border: none;
+    background-color: var(--branco); /* Garante fundo branco para o card */
+}
+
+.card-header {
+    /* Usa cores da paleta para o cabeçalho do card */
+    background-color: var(--vinho-medio-uniodonto);
+    color: var(--branco);
+    border-radius: 15px 15px 0 0 !important;
+    border-bottom: none; /* Remove borda padrão se houver */
+}
+
+#nome-sorteado {
+    font-size: 2.5rem;
+}
+
+.resultado-box {
+    /* Usa cores da paleta para a caixa de resultado */
+    background-color: var(--roxo-uniodonto); /* Fundo roxo claro */
+    border-radius: 10px;
+    /* Borda tracejada com cor da paleta */
+    border: 2px dashed var(--vinho-ultra-uniodonto);
+    padding: 15px; /* Adiciona padding para espaçamento interno */
+    color: var(--vinho-ultra-uniodonto); /* Cor do texto para contraste */
+}
+
+#btn-sortear {
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    /* Usa cores da paleta para o botão */
+    background-color: var(--goiaba-uniodonto);
+    color: var(--branco);
+    border: none;
+    border-radius: 8px; /* Arredonda as bordas do botão */
+    cursor: pointer; /* Muda o cursor ao passar por cima */
+    transition: background-color 0.3s ease; /* Efeito suave na mudança de cor */
+    font-family: 'Georama', sans-serif; /* Garante a fonte no botão */
+}
+
+#btn-sortear:hover {
+    /* Escurece um pouco no hover (pode usar outra cor da paleta se preferir) */
+    background-color: var(--vinho-claro-uniodonto);
+}
+
+.loading {
+    display: inline-block;
+    width: 20px; /* Ajusta tamanho para caber melhor no botão */
+    height: 20px;
+    /* Cor base da borda (transparente) usando variável */
+    border: 3px solid var(--branco-transparente);
+    border-radius: 50%;
+    /* Cor da parte que gira (branca) usando variável */
+    border-top-color: var(--branco);
+    animation: spin 1s ease-in-out infinite;
+    vertical-align: middle; /* Alinha verticalmente com o texto do botão */
+    margin-left: 8px; /* Espaço entre o texto e o loader */
+}
+
+/* Animação de rotação (sem alterações necessárias) */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.floco-pascoa {
+    will-change: transform, opacity;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
+    transition: opacity 0.5s ease-out;
+}
+
+@keyframes cair {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(calc(100vh + 100px)) rotate(360deg);
+        opacity: 0;
+    }
+}

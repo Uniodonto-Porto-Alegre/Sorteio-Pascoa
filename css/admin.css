@@ -1,0 +1,149 @@
+/* Importa a fonte Georama do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Define a paleta de cores como variáveis CSS globais */
+:root {
+    /* Paleta Principal */
+    --roxo-uniodonto: #b9c9ff;
+    --pessego-uniodonto: #ff9fad;
+    --ciano-uniodonto: #60ebff;
+    --lima-uniodonto: #e1ff7b;
+    --goiaba-uniodonto: #ff637e;
+
+    /* Paleta de Apoio */
+    --vinho-medio-uniodonto: #a60069;
+    --vinho-ultra-uniodonto: #550039;
+    --vinho-claro-uniodonto: #bc5688;
+
+    /* Cores Neutras */
+    --branco: #ffffff;
+    --cinza-claro: #f8f9fa;
+    --preto-transparente: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    /* Usa a variável para a cor de fundo */
+    background-color: var(--lima-uniodonto);
+    /* Aplica a fonte Georama globalmente */
+    font-family: 'Georama', sans-serif;
+}
+
+.admin-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    /* Usa a variável para a sombra */
+    box-shadow: 0 2px 4px var(--preto-transparente);
+    /* Define cores da navbar usando a paleta */
+    background-color: var(--vinho-medio-uniodonto);
+    color: var(--branco); /* Assume que o texto na navbar deve ser branco */
+}
+
+/* Ajusta a cor dos links na navbar (exemplo para Bootstrap) */
+.navbar .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.75); /* Cor mais suave para links */
+}
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--branco); /* Cor ativa/hover */
+}
+.navbar .navbar-brand {
+    color: var(--branco); /* Cor da marca */
+}
+
+
+.card {
+    border-radius: 10px;
+    /* Usa a variável para a sombra */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.311);
+    margin-bottom: 20px;
+    border: none;
+    background-color: var(--branco); /* Garante fundo branco para o card */
+}
+
+.btn {
+    background-color: #a60069;
+    font-weight: bold;
+    border: solid transparent 2px;
+    color: white;
+}
+
+.btn:hover {
+    background-color: white;
+    border: #a60069 solid 2px;
+    color: #a60069;
+}
+
+.card-header {
+    padding-top: 15px;
+    border-radius: 10px 10px 0 0 !important;
+    /* Define cores do cabeçalho do card usando a paleta */
+    background-color: var(--vinho-medio-uniodonto);
+    color: var(--vinho-ultra-uniodonto);
+    border-bottom: none; /* Remove a borda inferior se houver */
+}
+
+.table th {
+    border-top: none;
+    /* Define cores para o cabeçalho da tabela */
+    color: var(--vinho-ultra-uniodonto);
+    font-weight: 600; /* Deixa o texto do cabeçalho mais forte */
+    background-color: var(--cinza-claro); /* Fundo sutil para diferenciar */
+}
+
+/* Estilo opcional para zebrar a tabela */
+.table tbody tr:nth-of-type(odd) {
+    background-color: rgba(185, 201, 255, 0.1); /* Roxo bem claro e transparente */
+}
+
+.btn-action {
+    padding: 5px 10px;
+    margin: 0 3px;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    /* Define cores padrão para botões de ação */
+    background-color: var(--ciano-uniodonto);
+    color: var(--vinho-ultra-uniodonto);
+    font-family: 'Georama', sans-serif; /* Garante a fonte no botão */
+}
+
+.btn-action:hover {
+    /* Leve escurecida ou mudança no hover */
+    background-color: var(--vinho-claro-uniodonto);
+    color: var(--branco);
+}
+
+/* Exemplo: Botão de perigo (vermelho/goiaba) */
+.btn-action.btn-danger { /* Adicione a classe .btn-danger ao botão HTML se necessário */
+    background-color: var(--vinho-medio-uniodonto);
+    color: var(--branco);
+}
+.btn-action.btn-danger:hover {
+    background-color: var(--vinho-medio-uniodonto);
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block; /* Garante que o padding funcione corretamente */
+}
+
+.bg-pendente {
+    /* Usa cores da paleta para o status pendente */
+    background-color: var(--goiaba-uniodonto);
+    color: white;
+}
+
+.bg-sorteado {
+    /* Usa cores da paleta para o status sorteado/concluído */
+    background-color: var(--lima-uniodonto);
+    color: var(--vinho-ultra-uniodonto);
+}

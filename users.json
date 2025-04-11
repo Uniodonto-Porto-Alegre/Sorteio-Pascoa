@@ -1,0 +1,430 @@
+{
+    "usuarios": {
+      "user1": {
+        "id": "user1",
+        "cpf": "07928222930",
+        "nome": "ROBERTA BRAGA BERTOGLIO",
+        "sorteado": false
+      },
+      "user2": {
+        "id": "user2",
+        "cpf": "73694487034",
+        "nome": "TATIANE DE CAMPOS CHAVES",
+        "sorteado": false
+      },
+      "user3": {
+        "id": "user3",
+        "cpf": "02359121901",
+        "nome": "MARIANA PANIZZA MACIEL",
+        "sorteado": false
+      },
+      "user4": {
+        "id": "user4",
+        "cpf": "80705359034",
+        "nome": "GREICE SOARES DOS SANTOS",
+        "sorteado": false
+      },
+      "user5": {
+        "id": "user5",
+        "cpf": "34628762015",
+        "nome": "LUIZ FERNANDO GARCIA DA ROCHA",
+        "sorteado": false
+      },
+      "user6": {
+        "id": "user6",
+        "cpf": "80498035034",
+        "nome": "ADRIANE LOBA ELGUY",
+        "sorteado": false
+      },
+      "user7": {
+        "id": "user7",
+        "cpf": "01084559048",
+        "nome": "VIVIAN HEYLMANN DE SOUSA",
+        "sorteado": false
+      },
+      "user8": {
+        "id": "user8",
+        "cpf": "01104505070",
+        "nome": "ALINE DE ALMEIDA DUARTE",
+        "sorteado": false
+      },
+      "user9": {
+        "id": "user9",
+        "cpf": "28821173020",
+        "nome": "KYNE BEATRIZ LIEMES PETILLO",
+        "sorteado": false
+      },
+      "user10": {
+        "id": "user10",
+        "cpf": "97587826068",
+        "nome": "SANDRA MARIA CONCEICAO DA ROSA",
+        "sorteado": false
+      },
+      "user11": {
+        "id": "user11",
+        "cpf": "92286038015",
+        "nome": "MARCIA ALDINA ALMEIDA BATUBA FONTOURA",
+        "sorteado": false
+      },
+      "user12": {
+        "id": "user12",
+        "cpf": "03686546051",
+        "nome": "ROSIMERI DA SILVA GERALDO",
+        "sorteado": false
+      },
+      "user13": {
+        "id": "user13",
+        "cpf": "01082797073",
+        "nome": "WILLIAM SILVA DE ALMEIDA",
+        "sorteado": false
+      },
+      "user14": {
+        "id": "user14",
+        "cpf": "01098704096",
+        "nome": "ANDRELISA RIBEIRO GUIMARAES",
+        "sorteado": false
+      },
+      "user15": {
+        "id": "user15",
+        "cpf": "00334569095",
+        "nome": "HAIRLAINE QUEISI FREITAS",
+        "sorteado": false
+      },
+      "user16": {
+        "id": "user16",
+        "cpf": "87334348087",
+        "nome": "ANDRE VIEIRA KORPALSKI",
+        "sorteado": false
+      },
+      "user17": {
+        "id": "user17",
+        "cpf": "09849044683",
+        "nome": "PAMELA HELLEN LACERDA FERREIRA",
+        "sorteado": false
+      },
+      "user18": {
+        "id": "user18",
+        "cpf": "00128385006",
+        "nome": "MAGIANE FATIMA VOLFF",
+        "sorteado": false
+      },
+      "user19": {
+        "id": "user19",
+        "cpf": "02940556067",
+        "nome": "MARIA VITORIA SANTOS DA SILVA",
+        "sorteado": false
+      },
+      "user20": {
+        "id": "user20",
+        "cpf": "03824081016",
+        "nome": "RICARDO DA SILVA FLORES",
+        "sorteado": false
+      },
+      "user21": {
+        "id": "user21",
+        "cpf": "02911816005",
+        "nome": "ALEXANDRE AQUINO HENRIQUES",
+        "sorteado": false
+      },
+      "user22": {
+        "id": "user22",
+        "cpf": "96310944053",
+        "nome": "LETICIA DE LIMA MACHADO",
+        "sorteado": false
+      },
+      "user23": {
+        "id": "user23",
+        "cpf": "04902085925",
+        "nome": "MARINEZ MULLER SANTOS",
+        "sorteado": false
+      },
+      "user24": {
+        "id": "user24",
+        "cpf": "01629113000",
+        "nome": "DHIONAS RIBEIRO MAGALHAES",
+        "sorteado": false
+      },
+      "user25": {
+        "id": "user25",
+        "cpf": "70216045053",
+        "nome": "FERNANDA SILVEIRA DA CUNHA",
+        "sorteado": false
+      },
+      "user26": {
+        "id": "user26",
+        "cpf": "02697143084",
+        "nome": "JOSE NERES DA SILVA JUNIOR",
+        "sorteado": false
+      },
+      "user27": {
+        "id": "user27",
+        "cpf": "97870161004",
+        "nome": "JAQUELINE DA SILVA NOGUEIRA",
+        "sorteado": false
+      },
+      "user28": {
+        "id": "user28",
+        "cpf": "01154492052",
+        "nome": "CRISTIANO DE VARGAS EBEL",
+        "sorteado": false
+      },
+      "user29": {
+        "id": "user29",
+        "cpf": "01732348014",
+        "nome": "SUELEN STRELOW BIERHALS",
+        "sorteado": false
+      },
+      "user30": {
+        "id": "user30",
+        "cpf": "91950660044",
+        "nome": "VINICIUS AUGUSTO DUARTE LUZZI",
+        "sorteado": false
+      },
+      "user31": {
+        "id": "user31",
+        "cpf": "00495122009",
+        "nome": "JOSIANE MELO DE OLIVEIRA",
+        "sorteado": false
+      },
+      "user32": {
+        "id": "user32",
+        "cpf": "02652581031",
+        "nome": "ISABEL CRISTINA MATTOS BARCELLOS",
+        "sorteado": false
+      },
+      "user33": {
+        "id": "user33",
+        "cpf": "75283409015",
+        "nome": "MICHELLE CAMARGO DA SILVA THIMMIG ROSA",
+        "sorteado": false
+      },
+      "user34": {
+        "id": "user34",
+        "cpf": "00345145038",
+        "nome": "MARINA TRUCOLO CONCI",
+        "sorteado": false
+      },
+      "user35": {
+        "id": "user35",
+        "cpf": "85945650030",
+        "nome": "BRYAN LAMANNA FERREIRA DA SILVA",
+        "sorteado": false
+      },
+      "user36": {
+        "id": "user36",
+        "cpf": "00526305010",
+        "nome": "MARCIO DOS SANTOS FONSECA",
+        "sorteado": false
+      },
+      "user37": {
+        "id": "user37",
+        "cpf": "02054130052",
+        "nome": "NATALIA VIEIRA OLIVEIRA",
+        "sorteado": false
+      },
+      "user38": {
+        "id": "user38",
+        "cpf": "04375048085",
+        "nome": "VICTOR HENRIQUE NUNES",
+        "sorteado": false
+      },
+      "user39": {
+        "id": "user39",
+        "cpf": "88032108068",
+        "nome": "LUDMILLA DE OLIVEIRA PIRES",
+        "sorteado": false
+      },
+      "user40": {
+        "id": "user40",
+        "cpf": "03719882098",
+        "nome": "NATALI GERMANO REICHSTEIN",
+        "sorteado": false
+      },
+      "user41": {
+        "id": "user41",
+        "cpf": "90809351072",
+        "nome": "FERNANDO GALLINATI VAZ",
+        "sorteado": false
+      },
+      "user42": {
+        "id": "user42",
+        "cpf": "02822213011",
+        "nome": "GUILHERME GOMES ALVES",
+        "sorteado": false
+      },
+      "user43": {
+        "id": "user43",
+        "cpf": "03268531032",
+        "nome": "ANDRESSA PEREIRA MARIA",
+        "sorteado": false
+      },
+      "user44": {
+        "id": "user44",
+        "cpf": "02459380011",
+        "nome": "TAMARA PERINI MACHADO",
+        "sorteado": false
+      },
+      "user45": {
+        "id": "user45",
+        "cpf": "02865923045",
+        "nome": "GUILHERME LEMOS GUARNIERI",
+        "sorteado": false
+      },
+      "user46": {
+        "id": "user46",
+        "cpf": "80489052053",
+        "nome": "ALINE ROCHA FIOSSON",
+        "sorteado": false
+      },
+      "user47": {
+        "id": "user47",
+        "cpf": "86867873049",
+        "nome": "AMANDA MELGAREJO ALVES",
+        "sorteado": false
+      },
+      "user48": {
+        "id": "user48",
+        "cpf": "60094501017",
+        "nome": "MATHEUS LOPES SOARES",
+        "sorteado": false
+      },
+      "user49": {
+        "id": "user49",
+        "cpf": "63372169034",
+        "nome": "MARIA LUCIA WEBER BAIERLE",
+        "sorteado": false
+      },
+      "user50": {
+        "id": "user50",
+        "cpf": "89676963020",
+        "nome": "SIMONE BAIMA PEREIRA",
+        "sorteado": false
+      },
+      "user51": {
+        "id": "user51",
+        "cpf": "10186839928",
+        "nome": "CAROLINA GOLENIA DOS PASSOS",
+        "sorteado": false
+      },
+      "user52": {
+        "id": "user52",
+        "cpf": "36248983020",
+        "nome": "CRISTIANE BARDINI",
+        "sorteado": false
+      },
+      "user53": {
+        "id": "user53",
+        "cpf": "00256975019",
+        "nome": "DAIANA DA SILVA MATTOS",
+        "sorteado": false
+      },
+      "user54": {
+        "id": "user54",
+        "cpf": "02221786041",
+        "nome": "CARINE DA SILVA BROMBATTI",
+        "sorteado": false
+      },
+      "user55": {
+        "id": "user55",
+        "cpf": "01560923016",
+        "nome": "DEBORA BRANDT CORDEIRO",
+        "sorteado": false
+      },
+      "user56": {
+        "id": "user56",
+        "cpf": "01344168051",
+        "nome": "QUELE ALMEIDA ALVES",
+        "sorteado": false
+      },
+      "user57": {
+        "id": "user57",
+        "cpf": "84804491015",
+        "nome": "DENNIS LAUSCH SERAFIM",
+        "sorteado": false
+      },
+      "user58": {
+        "id": "user58",
+        "cpf": "74023268020",
+        "nome": "LIZIANE MEIRELES DORNELLES",
+        "sorteado": false
+      },
+      "user59": {
+        "id": "user59",
+        "cpf": "03812608014",
+        "nome": "RAPHAEL FLORISBAL STEFENS",
+        "sorteado": false
+      },
+      "user60": {
+        "id": "user60",
+        "cpf": "50029207053",
+        "nome": "RONI CESAR FICK",
+        "sorteado": false
+      },
+      "user61": {
+        "id": "user61",
+        "cpf": "97717762072",
+        "nome": "ROSSANO BARTH RAPHAELLI",
+        "sorteado": false
+      },
+      "user62": {
+        "id": "user62",
+        "cpf": "84803339015",
+        "nome": "JENIFER FRANCINE DA SILVA",
+        "sorteado": false
+      },
+      "user63": {
+        "id": "user63",
+        "cpf": "01775207013",
+        "nome": "JUCIANE LOERI DA SILVA",
+        "sorteado": false
+      },
+      "user64": {
+        "id": "user64",
+        "cpf": "03044802075",
+        "nome": "CAMILA BERGGUIST FRIEDRICH",
+        "sorteado": false
+      },
+      "user65": {
+        "id": "user65",
+        "cpf": "86641964000",
+        "nome": "MILENA SILVEIRA DOS SANTOS",
+        "sorteado": false
+      },
+      "user66": {
+        "id": "user66",
+        "cpf": "01620138093",
+        "nome": "ROSANA SALDANHA JUNG",
+        "sorteado": false
+      },
+      "user67": {
+        "id": "user67",
+        "cpf": "93508492087",
+        "nome": "FERNANDA MENDES MENEGUETTE",
+        "sorteado": false
+      },
+      "user68": {
+        "id": "user68",
+        "cpf": "03359566025",
+        "nome": "JESSICA GONCALVES TEIXEIRA",
+        "sorteado": false
+      },
+      "user69": {
+        "id": "user69",
+        "cpf": "72771682087",
+        "nome": "SIMONE MANTELLI",
+        "sorteado": false
+      },
+      "user70": {
+        "id": "user70",
+        "cpf": "87129396091",
+        "nome": "RODRIGO DA SILVA OLIVEIRA",
+        "sorteado": false
+      },
+      "user71": {
+        "id": "user71",
+        "cpf": "98098241068",
+        "nome": "VINICIUS SBARAINI AZAMBUJA",
+        "sorteado": false
+      }
+    }
+  }

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Sorteio de Páscoa</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link href="css/admin.css" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-egg me-2"></i>Admin - Sorteio de Páscoa
+                </a>
+                <button class="btn btn-danger ms-auto" id="btn-reset-sorteio">
+                    <i class="fas fa-sync-alt me-2"></i>Resetar Sorteio
+                </button>
+            </div>
+        </nav>
+
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header  text-white">
+                            <h4><i class="fas fa-user-edit me-2"></i>Cadastrar Usuário</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="form-usuario">
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Nome Completo</label>
+                                    <input type="text" class="form-control" id="nome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cpf" class="form-label">CPF</label>
+                                    <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" required>
+                                </div>
+                                <button type="submit" class="btn w-100">
+                                    <i class="fas fa-save me-2"></i>Salvar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-header  text-white">
+                            <h4><i class="fas fa-users me-2"></i>Lista de Participantes</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>CPF</th>
+                                            <th>Status</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="lista-usuarios">
+                                        <!-- Usuários serão carregados aqui via JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Confirmação</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Conteúdo dinâmico -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmAction">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery e jQuery Mask -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Admin JS -->
+    <script src="js/admin.js"></script>
+
+  
+</body>
+</html>

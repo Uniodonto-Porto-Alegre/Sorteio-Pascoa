@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sorteio de Páscoa</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- CSS Personalizado -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .user-photo {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 20px;
+            display: none; /* Inicialmente escondido */
+        }
+        .photo-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .photo-placeholder i {
+            font-size: 3rem;
+            color: #6c757d;
+        }
+        .resultado-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .photo-container {
+            position: relative;
+            margin: 0 auto 20px;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center" style="min-height: 100vh; align-items: center;">
+            <div class="col-md-8 col-lg-6">
+                <div class="card mt-5 shadow-lg">
+                    <div class="card-header text-center text-white">
+                        <h2><i class="fas fa-egg me-2"></i>Sorteio de Páscoa</h2>
+                    </div>
+                    <div class="card-body p-4">
+                        <!-- Tela de identificação -->
+                        <div id="identificacao">
+                            <div class="mb-4">
+                                <label for="cpf" class="form-label">Digite seu CPF:</label>
+                                <input type="text" class="form-control form-control-lg" id="cpf" placeholder="000.000.000-00">
+                            </div>
+                            <button id="btn-verificar" class="btn btn-primary w-100 py-2">
+                                <i class="fas fa-check me-2"></i>Verificar
+                            </button>
+                        </div>
+                        
+                        <!-- Tela de sorteio -->
+                        <div id="sorteio" class="text-center" style="display: none;">
+                            <!-- Foto do usuário com fallback -->
+                            <div class="photo-container">
+                                <div id="foto-usuario-placeholder" class="photo-placeholder">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <img id="foto-usuario" class="user-photo" alt="Foto do usuário" onerror="this.style.display='none'; document.getElementById('foto-usuario-placeholder').style.display='flex';">
+                            </div>
+                            
+                            <h3 class="mb-3">Olá, <span id="nome-usuario" class="fw-bold"></span>!</h3>
+                            <p class="mb-4">Clique no botão abaixo para sortear seu amigo secreto de Páscoa</p>
+                            <button id="btn-sortear" class="btn btn-success btn-lg py-2 px-4 mb-3">
+                                <i class="fas fa-random me-2"></i>Sortear
+                            </button>
+                            <div id="resultado" class="alert alert-info" style="display: none;"></div>
+                        </div>
+                        
+                        <!-- Tela de resultado final -->
+                        <div id="resultado-final" class="text-center" style="display: none;">
+                            <h3 class="mb-4">Seu amigo secreto é:</h3>
+                            
+                            <!-- Foto do sorteado com fallback -->
+                            <div class="photo-container">
+                                <div id="foto-sorteado-placeholder" class="photo-placeholder">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <img id="foto-sorteado" class="user-photo animate__animated" alt="Foto do sorteado" onerror="this.style.display='none'; document.getElementById('foto-sorteado-placeholder').style.display='flex';">
+                            </div>
+                            
+                            <div class="resultado-box animate__animated animate__fadeIn">
+                                <h2 id="nome-sorteado" class="display-5 fw-bold text-primary"></h2>
+                            </div>
+                            <p class="text-muted mt-3">Obrigado por participar do nosso sorteio de Páscoa!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery (para máscaras) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <!-- App JS -->
+    <script src="js/app.js"></script>
+</body>
+</html>
