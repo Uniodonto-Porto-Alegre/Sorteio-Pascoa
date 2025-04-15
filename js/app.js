@@ -1,5 +1,5 @@
 // Configurações
-const FIREBASE_URL = "https://sorteio-pascoa-default-rtdb.firebaseio.com";
+const FIREBASE_URL = "https://sorteio-pascoa-default-rtdb.firebaseio.com/";
 const ENDPOINT_USUARIOS = `${FIREBASE_URL}/usuarios.json`;
 const FOTOS_LOCAIS = "Colaboradores/"; // Pasta local onde as imagens estão armazenadas
 const ICONES_PASCOA = "images/"; // Pasta com os ícones de Páscoa
@@ -16,18 +16,6 @@ function preCarregarImagensPascoa() {
         img.src = `${ICONES_PASCOA}Ativo ${i}.png`;
     }
 }
-
-
-function capitalizarNomeCompleto(frase) {
-    return frase
-        .toLowerCase() // primeiro converte tudo para minúsculo
-        .split(' ') // divide a string em palavras
-        .map(palavra => 
-            palavra.charAt(0).toUpperCase() + palavra.slice(1)
-        ) // capitaliza cada palavra
-        .join(' '); // junta as palavras novamente
-}
-
 
 // Função para criar efeito de flocos de Páscoa
 function criarFlocosPascoa() {
@@ -104,7 +92,6 @@ const fotoSorteadoPlaceholder = document.getElementById('foto-sorteado-placehold
 // Variáveis globais
 let usuarioAtual = null;
 let participantes = [];
-let sorteados = [];
 
 // Verificar CPF do usuário
 btnVerificar.addEventListener('click', verificarUsuario);
@@ -146,8 +133,14 @@ async function verificarUsuario() {
                 }
                 mostrarResultadoFinal(usuarioAtual.amigoSorteado);
             } else {
-                // Carrega lista de participantes
-                await carregarParticipantes(usuarios);
+                // Carrega lista de participantes com verificação de amigos já sorteados
+                participantes = await carregarParticipantes(usuarios);
+                
+                if (participantes.length === 0) {
+                    alert('Não há mais participantes disponíveis para sorteio. Todos os amigos já foram sorteados.');
+                    return;
+                }
+                
                 mostrarTelaSorteio();
             }
         } else {
@@ -188,28 +181,34 @@ function carregarFotoLocal(cpf, elementoImg, elementoPlaceholder) {
     }, 100);
 }
 
+// [Manter todas as outras funções e configurações iguais...]
+
 async function carregarParticipantes(usuarios) {
-    participantes = [];
-    sorteados = [];
-    
-    // Filtra participantes que ainda não foram sorteados
-    for (const [key, user] of Object.entries(usuarios)) {
-        if (!user.sorteado && key !== usuarioAtual.key) {
-            participantes.push({
-                key: key,
-                nome: user.nome,
-                cpf: user.cpf
-            });
-        }
-        
-        if (user.amigoSorteado) {
-            sorteados.push(user.amigoSorteado);
-        }
-    }
-    
-    // Remove o usuário atual da lista de participantes
-    participantes = participantes.filter(p => p.key !== usuarioAtual.key);
+    // 1. Coletar todos os amigos já sorteados (nomes em amigoSorteado)
+    const amigosJaSorteados = Object.values(usuarios)
+        .map(user => user.amigoSorteado)
+        .filter(nome => nome); // Remove valores nulos/undefined
+
+    // 2. Filtrar participantes elegíveis:
+    // - Que não estão na lista de amigosJaSorteados
+    // - Que não são o usuário atual
+    const participantesDisponiveis = Object.entries(usuarios)
+        .filter(([key, user]) => {
+            const naoFoiSorteadoComoAmigo = !amigosJaSorteados.includes(user.nome);
+            const naoEUsuarioAtual = key !== usuarioAtual.key;
+            
+            return naoFoiSorteadoComoAmigo && naoEUsuarioAtual;
+        })
+        .map(([key, user]) => ({
+            key: key,
+            nome: user.nome,
+            cpf: user.cpf
+        }));
+
+    return participantesDisponiveis;
 }
+
+// [Restante do código permanece igual...]
 
 function mostrarTelaSorteio() {
     identificacao.style.display = 'none';
@@ -218,13 +217,19 @@ function mostrarTelaSorteio() {
     btnSortear.addEventListener('click', realizarSorteio);
 }
 
-// Modificação na função realizarSorteio para incluir o efeito
 async function realizarSorteio() {
+    // Atualiza a lista de participantes para garantir dados recentes
+    const response = await fetch(ENDPOINT_USUARIOS);
+    const usuarios = await response.json();
+    participantes = await carregarParticipantes(usuarios);
+    
+    // Verificação reforçada
     if (participantes.length === 0) {
-        alert('Não há mais participantes disponíveis para sorteio.');
+        alert('Não há mais participantes disponíveis para sorteio. Todos os amigos já foram sorteados.');
         return;
     }
     
+    // Configuração do estado inicial do botão e interface
     btnSortear.innerHTML = '<span class="loading"></span> Sorteando...';
     btnSortear.disabled = true;
     resultado.style.display = 'none';
@@ -233,21 +238,23 @@ async function realizarSorteio() {
     const loadingOverlay = document.getElementById('loadingOverlay');
     const loadingBar = document.getElementById('loadingBar');
     loadingOverlay.style.transform = 'translateY(0)';
-    
     loadingBar.style.width = '0%';
 
     // Inicia a animação da barra de carregamento
     setTimeout(() => {
         loadingBar.style.width = '100%';
-    }, 50); // Pequeno delay para garantir que a transição seja aplicada
-       // Prepara o áudio
-       const aplausosAudio = document.getElementById('aplausosAudio');
+    }, 50);
+    
+    // Prepara o áudio
+    const aplausosAudio = document.getElementById('aplausosAudio');
+    let audioTimer;
+    
     try {
-             // Configura o timer para tocar o áudio após 2 segundos
-             const audioTimer = setTimeout(() => {
-                aplausosAudio.play().catch(e => console.error("Erro ao reproduzir áudio:", e));
-            }, 2000);
-            
+        // Configura o timer para tocar o áudio após 2 segundos
+        audioTimer = setTimeout(() => {
+            aplausosAudio.play().catch(e => console.error("Erro ao reproduzir áudio:", e));
+        }, 2000);
+        
         // Efeito de suspense (2 segundos para coincidir com a barra)
         await new Promise(resolve => setTimeout(resolve, 2000));
         
@@ -255,8 +262,16 @@ async function realizarSorteio() {
         const indiceSorteado = Math.floor(Math.random() * participantes.length);
         const amigoSorteado = participantes[indiceSorteado];
         
-        criarFlocosPascoa();
+        // Verificação adicional do amigo sorteado
+        if (!amigoSorteado) {
+            throw new Error('Nenhum amigo válido foi sorteado');
+        }
         
+        // Atualiza o Firebase em duas etapas:
+        // 1. Marca o usuário atual como sorteado
+        // 2. Marca o amigo sorteado como "já foi sorteado por alguém"
+        
+        // Primeiro: atualiza o usuário atual
         await fetch(`${FIREBASE_URL}/usuarios/${usuarioAtual.key}.json`, {
             method: 'PATCH',
             body: JSON.stringify({
@@ -269,32 +284,57 @@ async function realizarSorteio() {
             }
         });
         
+        // Segundo: marca o amigo sorteado como "sorteadoPor" para evitar duplicação
+        await fetch(`${FIREBASE_URL}/usuarios/${amigoSorteado.key}.json`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                sorteadoPor: usuarioAtual.nome
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        // Efeitos visuais
+        criarFlocosPascoa();
+        
+        // Carrega e exibe as fotos
         carregarFotoLocal(amigoSorteado.cpf, fotoSorteado, fotoSorteadoPlaceholder);
         mostrarResultadoFinal(amigoSorteado.nome);
         
     } catch (error) {
         console.error('Erro ao realizar sorteio:', error);
+        
+        // Limpa o timer do áudio se houve erro
+        if (audioTimer) clearTimeout(audioTimer);
+        
         resultado.style.display = 'block';
-        resultado.innerHTML = 'Ocorreu um erro ao realizar o sorteio. Por favor, tente novamente.';
+        resultado.innerHTML = `
+            <div class="alert alert-danger">
+                Ocorreu um erro ao realizar o sorteio: ${error.message}<br>
+                Por favor, recarregue a página e tente novamente.
+            </div>
+        `;
         pararFlocosPascoa();
+        
     } finally {
-
-        // No try/catch, antes de esconder o overlay:
+        // Finalização da animação
         loadingBar.classList.add('complete');
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Espera a animação terminar
+        await new Promise(resolve => setTimeout(resolve, 1000));
         loadingOverlay.style.transform = 'translateY(-100%)';
         loadingBar.classList.remove('complete');
-    
+        
         // Reseta a barra para próxima vez
         loadingBar.style.transition = 'none';
-        // Força o reflow antes de reaplicar a transição
-        void loadingBar.offsetWidth;
+        void loadingBar.offsetWidth; // Força o reflow
         loadingBar.style.transition = 'width 2s linear';
         
+        // Restaura o botão
         btnSortear.innerHTML = '<i class="fas fa-random me-2"></i>Sortear';
         btnSortear.disabled = false;
     }
 }
+
 function mostrarResultadoFinal(nomeAmigo) {
     identificacao.style.display = 'none';
     sorteio.style.display = 'none';
@@ -306,3 +346,6 @@ function mostrarResultadoFinal(nomeAmigo) {
         document.querySelector('.resultado-box').classList.add('animate__animated', 'animate__bounceIn');
     }, 100);
 }
+
+// Pré-carrega imagens quando a página carrega
+window.addEventListener('DOMContentLoaded', preCarregarImagensPascoa);

@@ -1,5 +1,5 @@
     // Configurações
-    const FIREBASE_URL = "https://sorteio-pascoa-default-rtdb.firebaseio.com";
+    const FIREBASE_URL = "https://sorteio-pascoa-default-rtdb.firebaseio.com/";
     const ENDPOINT_USUARIOS = `${FIREBASE_URL}/usuarios.json`;
 
     // Elementos da interface
